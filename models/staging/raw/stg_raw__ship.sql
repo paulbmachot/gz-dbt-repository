@@ -6,7 +6,8 @@ cleaned as (
     select
         orders_id,
         shipping_fee,
-        ship_cost
+        logCost as log_cost,
+        cast(ship_cost as FLOAT64) as ship_cost
     from source
     where shipping_fee is not null
 )

@@ -2,13 +2,13 @@
 
   SELECT
       products_id,
-      date_date,
-      orders_id,
-      revenue,
+      order_date,
+      order_id,
+      total_amount,
       quantity,
       purchase_price,
       ROUND(s.quantity*p.purchase_price,2) AS purchase_cost,
-      ROUND(s.revenue - s.quantity*p.purchase_price, 2) AS margin
+      ROUND(s.total_amount - s.quantity*p.purchase_price, 2) AS margin
   FROM {{ref("stg_raw__sales")}} s
   LEFT JOIN {{ref("stg_raw__product")}} p
       USING (products_id)
